@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>地图打卡留言板</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <!-- Map Container -->
+  <div id="map"></div>
+
+  <!-- Add Comment Modal -->
+  <div id="addCommentModal" class="overlay" style="display: none;">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <form id="commentForm">
+        <input type="text" name="name" placeholder="昵称" required>
+        <textarea name="text" placeholder="留言内容" required></textarea>
+        <div><label>图片(可选)： <input type="file" name="image" accept="image/*"></label></div>
+        <!-- Hidden fields for coordinates -->
+        <input type="hidden" name="lat" id="commentLat">
+        <input type="hidden" name="lng" id="commentLng">
+        <button type="submit">提交</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Comment Detail Overlay (for viewing a comment and its replies) -->
+  <div id="detailOverlay" class="overlay" style="display: none;">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <!-- Comment details and replies will be inserted here by JS -->
+      <div id="commentDetail"></div>
+      <div id="repliesList"></div>
+      <!-- Reply form -->
+      <form id="replyForm">
+        <input type="hidden" name="comment_id" id="replyCommentId">
+        <input type="text" name="name" placeholder="昵称" required>
+        <textarea name="text" placeholder="回复内容" required></textarea>
+        <div><label>图片(可选)： <input type="file" name="image" accept="image/*"></label></div>
+        <button type="submit">回复</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Load AMap JS API (Gaode Map) -->
+  <script src="https://webapi.amap.com/maps?v=2.0&key={{ amap_key }}&plugin=AMap.Scale,AMap.ToolBar"></script>
+  <!-- Load custom JavaScript -->
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
