@@ -7,6 +7,9 @@ app = Flask(__name__)
 # Configure upload folder for images
 app.config['UPLOAD_FOLDER'] = config.UPLOAD_FOLDER
 
+# Intialize database schema , creating tables if they don't exist
+db.initialize_db()
+
 @app.route('/')
 def index():
     # Render main page template and pass AMap API key for the map
