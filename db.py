@@ -109,3 +109,36 @@ def add_reply(comment_id, name, text, img_url):
         return result[0], result[1].strftime("%Y-%m-%d %H:%M:%S")
     else:
         return None, None
+    
+def initialize_db():
+    """初始化数据库，检查表是否存在，如果不存在则创建表"""
+    conn = get_db_connection()
+    cur = conn.cursor()
+    
+    # 检查并创建 comments 表
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS comments (
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(100),
+        text TEXT,
+        img_url TEXT,
+        lat FLOAT,
+        lng FLOAT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+    """)
+    
+    # 检查并创建 replies 表
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS replies (
+        id SERIAL PRIMARY KEY,
+        comment_id INT REFERENCES comments(id) ON DELETE CASCADE,
+        name VARCHAR(100),
+        text TEXT,
+        img_url TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+    """)
+
+    conn.commit()
+    conn.close()
