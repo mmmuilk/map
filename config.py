@@ -6,9 +6,9 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_CONFIG = {
     "host": "localhost",  # 本地数据库
     "port": 5432,  # PostgreSQL 默认端口
-    "database": "map",  # 你的数据库名
-    "user": "mapadm",  # 你的数据库用户名
-    "password": "Fkbhoy4nUL"  # 你的数据库密码
+    "database": "kuang0",  # 你的数据库名
+    "user": "postgres",  # 你的数据库用户名
+    "password": "7010mzxA!"  # 你的数据库密码
 }
 
 # 高德地图 API Key（请替换为你自己的 Key）
