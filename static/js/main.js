@@ -1,6 +1,6 @@
 // Initialize the map and load existing comments
 const map = new AMap.Map('map', {
-    center: [117.145, 34.217],           // Center coordinates (CUMT Library vicinity)
+    center: [xxx, xxx],           // 填入自定义坐标中心 117.145, 34.217
     zoom: 17,
     viewMode: '3D',
     pitch: 45,                          // 3D view pitch (0-83)
