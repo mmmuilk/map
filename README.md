@@ -1,5 +1,6 @@
 # map
-##创建数据库结构
+对应数据库结构
+
 CREATE TABLE IF NOT EXISTS comments (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
